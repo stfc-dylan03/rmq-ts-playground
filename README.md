@@ -8,6 +8,8 @@ As the new ERA system will be written in TypeScript, that is the language I will
 ## Roadmap
 
 ### Stage 1 - Hello RabbitMQ
+- [ ] Run RabbitMQ locally
+- [ ] Access the RabbitMQ Management UI
 
 ### Stage 2 - Basic Events
 
