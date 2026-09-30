@@ -17,6 +17,7 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - In another terminal run `npx tsx src/producer.ts`
    - Every time this is run a message is sent to the subscribed queue
    - The consumer terminal should display this message
+- If the consumer is not running but `npx tsx src/producer.ts` is still run, the the messages should be stored in the queue as 'Unacked' until the consumer is back online
 
 
 ## Roadmap
