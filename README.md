@@ -9,7 +9,14 @@ As the new ERA system will be written in TypeScript, that is the language I will
 2. If `Status` is `Stopped`:
    - `cd "C:\Program Files\RabbitMQ Server\rabbitmq_server-4.3.6\sbin"` Note: version number might change
    - run `.\rabbitmq-server.bat`
-3. Go to `http://localhost:15672/` 
+3. Go to `http://localhost:15672/`
+
+## Usage
+- In one terminal run `npx tsx src/consumer.ts`
+   - This is the consumer terminal that should be waiting for messages in the subscribed queue
+- In another terminal run `npx tsx src/producer.ts`
+   - Every time this is run a message is sent to the subscribed queue
+   - The consumer terminal should display this message
 
 
 ## Roadmap
