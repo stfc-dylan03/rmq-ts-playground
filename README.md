@@ -30,12 +30,12 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [x] Send a simple message from a producer to a consumer
 
 ### Stage 2 - Basic Events
-- [ ] Create a simple event object
-- [ ] Serialise the event to JSON
-- [ ] Publish the event
-- [ ] Consume the event
-- [ ] Deserialise the event
-- [ ] Perform an action based on the event
+- [x] Create a simple event object
+- [x] Serialise the event to JSON
+- [x] Publish the event
+- [x] Consume the event
+- [x] Deserialise the event
+- [x] Perform an action based on the event
 
 ### Stage 3 - TypeScript Event Types
 
