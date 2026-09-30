@@ -23,10 +23,19 @@ As the new ERA system will be written in TypeScript, that is the language I will
 ## Roadmap
 
 ### Stage 1 - Hello RabbitMQ
-- [ ] Run RabbitMQ locally
-- [ ] Access the RabbitMQ Management UI
+[Guide](https://dev.to/harshit_bhardwaj_37bd0c14/getting-started-with-rabbitmq-in-nodejs-typescript-16km)
+- [x] Run RabbitMQ locally
+- [x] Access the RabbitMQ Management UI
+- [x] Connect to RabbitMQ from a basic TypeScript project
+- [x] Send a simple message from a producer to a consumer
 
 ### Stage 2 - Basic Events
+- [ ] Create a simple event object
+- [ ] Serialise the event to JSON
+- [ ] Publish the event
+- [ ] Consume the event
+- [ ] Deserialise the event
+- [ ] Perform an action based on the event
 
 ### Stage 3 - TypeScript Event Types
 
