@@ -38,6 +38,11 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [x] Perform an action based on the event
 
 ### Stage 3 - TypeScript Event Types
+- [ ] Define TypeScript event interfaces/types
+- [ ] Create multiple event types
+- [ ] Add common event metadata
+- [ ] Validate incoming messages
+- [ ] Handle unknown or malformed events
 
 ### Stage 4 - Exchanges and Routing
 
