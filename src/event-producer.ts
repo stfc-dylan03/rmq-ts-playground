@@ -36,3 +36,5 @@ async function produceEvent() {
 }
 
 produceEvent().catch(console.error);
+
+//run npx tsx src/event-producer.ts

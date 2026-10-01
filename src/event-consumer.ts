@@ -1,4 +1,5 @@
 import amqp from "amqplib";
+import { isDraftEvent } from "./events/validation.js";
 
 async function consumeEvents() {
     const connection = await amqp.connect("amqp://localhost");
@@ -32,6 +33,15 @@ async function consumeEvents() {
             }
 
             console.log("Parsed Event: ", event);
+
+            if (!isDraftEvent(event)) {
+                console.error("Invalid Draft event");
+                channel.ack(message);
+                return;
+            }
+
+            console.log("Valid event type: ", event.eventType);
+            console.log("Proposal ID: ", event.proposalId);
         }
     });
 }
