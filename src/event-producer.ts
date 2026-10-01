@@ -1,4 +1,5 @@
 import amqp from "amqplib";
+import type { DraftEvent } from "./events/types.js";
 
 async function produceEvent() {
     const connection = await amqp.connect("amqp://localhost");
@@ -12,7 +13,7 @@ async function produceEvent() {
 
 
     //Event
-    const event = {
+    const event: DraftEvent  = {
         eventType: "RISK_ASSESSMENT_REQUIRED",
         proposalId: 12345
     }
