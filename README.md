@@ -44,6 +44,24 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [ ] Validate incoming messages
 - [ ] Handle unknown or malformed events
 
+```mermaid
+flowchart TD
+    A[RabbitMQ] --> B[Incoming bytes]
+    B --> C[".toString()"]
+    C --> D[string]
+    D --> E["JSON.parse()"]
+
+    E -->|fails| F[Invalid JSON]
+    E -->|succeeds| G[unknown]
+
+    G --> H["isDraftEvent()"]
+
+    H -->|false| I[Invalid event]
+    H -->|true| J[DraftEvent]
+
+    J --> K[Safe to process]
+```
+
 ### Stage 4 - Exchanges and Routing
 
 ### Stage 5 - Simulated Draft - Risk Assessment Integration
