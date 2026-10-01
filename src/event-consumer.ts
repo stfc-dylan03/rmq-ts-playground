@@ -40,8 +40,16 @@ async function consumeEvents() {
                 return;
             }
 
-            console.log("Valid event type: ", event.eventType);
-            console.log("Proposal ID: ", event.proposalId);
+            switch (event.eventType) {
+                case "RISK_ASSESSMENT_REQUIRED":
+                    console.log("Creating risk assessment for propoal: ", event.proposalId);
+                    break;
+                case "DRAFT_COMPLETED":
+                    console.log("Draft completed for proposal: ", event.proposalId);
+                    break;
+            }
+
+            channel.ack(message);
         }
     });
 }
