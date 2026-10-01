@@ -14,9 +14,13 @@ async function produceEvent() {
 
     //Event
     const event: DraftEvent  = {
+        eventId: crypto.randomUUID(),
         eventType: "RISK_ASSESSMENT_REQUIRED",
+        eventVersion: 1,
+        timestamp: new Date().toISOString(),
+        source: "draft",
         proposalId: 12345
-    }
+    };
 
     const eventJson = JSON.stringify(event);
 
