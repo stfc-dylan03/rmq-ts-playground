@@ -19,19 +19,23 @@ async function consumeEvents() {
 
             console.log("Received JSON: ", eventJson);
 
-            const event = JSON.parse(eventJson);
-            console.log("Parsed Event: ", event);
+            let event: unknown;
 
-            console.log(event.eventType);
-            console.log(event.proposalId);
+            try
+            {
+                event = JSON.parse(eventJson);
+            } catch {
+                console.error("Message is not JSON");
 
-            if (event.eventType === "RISK_ASSESSMENT_REQUIRED") {
-                console.log("Creating risk assessment for proposal: ", event.proposalId);
+                channel.ack(message);
+                return;
             }
 
-            channel.ack(message);
+            console.log("Parsed Event: ", event);
         }
     });
 }
 
 consumeEvents().catch(console.error);
+
+// run npx tsx src/event-consumer.ts
