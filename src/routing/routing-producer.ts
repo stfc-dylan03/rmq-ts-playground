@@ -20,7 +20,7 @@ async function produceEvent() {
         proposalId: 12345
     };
 
-    const routingKey = "risk.assessment.required";
+    const routingKey = "draft.completed";
 
     channel.publish(
         exchange,
