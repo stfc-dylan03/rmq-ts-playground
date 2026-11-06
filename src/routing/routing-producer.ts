@@ -1,6 +1,15 @@
 import amqp from "amqplib";
 import type { DraftEvent } from "../events/types.js";
 
+function getRoutingKey(event: DraftEvent): string {
+    switch (event.eventType) {
+        case "RISK_ASSESSMENT_REQUIRED":
+            return "risk.assessment.required";
+        case "DRAFT_COMPLETED":
+            return "draft.completed";
+    }
+}
+
 async function produceEvent() {
     const connection = await amqp.connect("amqp://localhost");
     const channel = await connection.createChannel();
@@ -13,14 +22,14 @@ async function produceEvent() {
 
     const event: DraftEvent = {
         eventId: crypto.randomUUID(),
-        eventType: "RISK_ASSESSMENT_REQUIRED",
+        eventType: "DRAFT_COMPLETED",
         eventVersion: 1,
         timestamp: new Date().toISOString(),
         source: "draft",
         proposalId: 12345
     };
 
-    const routingKey = "draft.completed";
+    const routingKey = getRoutingKey(event);
 
     channel.publish(
         exchange,
