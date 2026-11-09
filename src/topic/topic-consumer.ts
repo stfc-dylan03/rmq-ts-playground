@@ -6,7 +6,7 @@ async function consumeEvents() {
     const channel = await connection.createChannel();
 
     const exchange = "draft.topic";
-    const queue = "risk.topic.queue";
+    const queue = "risk-topic.queue";
     const bindingKey = "risk.assessment.*";
 
     await channel.assertExchange(exchange, "topic", {

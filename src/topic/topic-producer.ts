@@ -22,7 +22,7 @@ async function produceEvent() {
 
     const event: DraftEvent = {
         eventId: crypto.randomUUID(),
-        eventType: "RISK_ASSESSMENT_REQUIRED",
+        eventType: "DRAFT_COMPLETED",
         eventVersion: 1,
         timestamp: new Date().toISOString(),
         source: "draft",
