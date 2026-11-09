@@ -45,11 +45,11 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [x] Handle unknown or malformed events
 
 ### Stage 4 — Exchanges and Routing
-- [ ] Understand what an exchange does
-- [ ] Understand the difference between queues and exchanges
-- [ ] Understand routing keys and bindings
-- [ ] Create a direct exchange
-- [ ] Route different events to different queues
+- [x] Understand what an exchange does
+- [x] Understand the difference between queues and exchanges
+- [x] Understand routing keys and bindings
+- [x] Create a direct exchange
+- [x] Route different events to different queues
 - [ ] Experiment with a topic exchange
 
 ```mermaid
