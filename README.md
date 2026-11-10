@@ -44,13 +44,21 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [x] Validate incoming messages
 - [x] Handle unknown or malformed events
 
-### Stage 4 — Exchanges and Routing
+### Stage 4 - Exchanges and Routing
 - [x] Understand what an exchange does
 - [x] Understand the difference between queues and exchanges
 - [x] Understand routing keys and bindings
 - [x] Create a direct exchange
 - [x] Route different events to different queues
-- [ ] Experiment with a topic exchange
+- [x] Experiment with a topic exchange
+
+### Stage 5 - ESR Prototype
+- [ ] Simulate ESS and STFC scheduling an experiment
+- [ ] Simulate the UO Backend creating an experiment
+- [ ] Publish an EXPERIMENT_CREATED event
+- [ ] Create an ESR queue and consumer
+- [ ] Validate the event and simulate ESR processing
+- [ ] Test the complete Scheduler → UO → ESR flow
 
 ```mermaid
 flowchart TD
