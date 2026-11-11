@@ -1,5 +1,17 @@
+export interface ProposalBookingTimeSlotAddedMessage {
+    id: number;
+    bookingType: string;
+    startsAt: string;
+    endsAt: string;
+    proposalBookingId: number;
+    status: string;
+    proposalPk: number;
+    localContactId: number | null;
+    instrumentId: number;
+}
+
 export interface ExperimentCreatedMessage {
-    experimetnId: string;
+    experimentId: string;
     experimentPk: number;
     startsAt: string;
     endAt: string;
