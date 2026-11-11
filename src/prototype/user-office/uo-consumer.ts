@@ -1,5 +1,5 @@
 import amqp from "amqplib";
-import type { ProposalBookingTimeSlotAddedMessage } from "../shared/events.js";
+import type { ProposalBookingTimeSlotAddedMessage, ExperimentCreatedMessage } from "../shared/events.js";
 
 interface BookingEvent {
     type: "PROPOSAL_BOOKING_TIME_SLOT_ADDED";
@@ -42,10 +42,15 @@ async function consumeBookingEvents() {
     const connection = await amqp.connect("amqp://localhost");
     const channel = await connection.createChannel();
 
-    const exchange = "user_office_scheduler_backend.fanout";
+    const incomingExchange = "user_office_scheduler_backend.fanout";
+    const outgoingExchange = "user_office_backend.fanout";
     const queue = "user_office_backend.queue";
 
-    await channel.assertExchange(exchange, "fanout", {
+    await channel.assertExchange(incomingExchange, "fanout", {
+        durable: true
+    });
+
+    await channel.assertExchange(outgoingExchange, "fanout", {
         durable: true
     });
 
@@ -53,7 +58,9 @@ async function consumeBookingEvents() {
         durable: true
     });
 
-    await channel.bindQueue(queue, exchange, "");
+    await channel.bindQueue(queue, incomingExchange, "");
+
+    let nextExperimentPk = 1;
 
     console.log("UO Backend: Waiting for booking events...");
 
@@ -82,6 +89,7 @@ async function consumeBookingEvents() {
 
         const experiment = {
             experimentId: `SIM-${booking.proposalPk}-${booking.id}`,
+            experimentPk: nextExperimentPk++,
             startsAt: booking.startsAt,
             endsAt: booking.endsAt,
             scheduledEventId: booking.id,
@@ -92,6 +100,30 @@ async function consumeBookingEvents() {
         };
 
         console.log("UO Backend: Experiment created: ", experiment);
+
+        const experimentMessage: ExperimentCreatedMessage = {
+            experimentId: experiment.experimentId,
+            experimentPk: experiment.experimentPk,
+            startsAt: experiment.startsAt,
+            endsAt: experiment.endsAt,
+            status: experiment.status,
+            samples: [],
+            instrument: {
+                id: experiment.instrumentId,
+                name: "Mock Instrument",
+                shortCode: "E01"
+            }
+        };
+
+        const createdEvent = {
+            type: "EXPERIMENT_CREATED",
+            message: experimentMessage
+        };
+
+        channel.publish(outgoingExchange, "", Buffer.from(JSON.stringify(createdEvent)));
+
+        console.log("UO Backend: Published EXPERIMENT_CREATED");
+        console.log("Published payload: ", createdEvent);
 
         channel.ack(msg);
     })

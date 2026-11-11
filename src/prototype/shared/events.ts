@@ -14,7 +14,7 @@ export interface ExperimentCreatedMessage {
     experimentId: string;
     experimentPk: number;
     startsAt: string;
-    endAt: string;
+    endsAt: string;
     status: string;
 
     proposal?: unknown;

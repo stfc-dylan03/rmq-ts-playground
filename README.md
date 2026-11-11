@@ -7,7 +7,7 @@ As the new ERA system will be written in TypeScript, that is the language I will
 ## Startup
 1. Check if RabbitMQ is running with `Get-Service RabbitMQ`
 2. If `Status` is `Stopped`:
-   - `cd "C:\Program Files\RabbitMQ Server\rabbitmq_server-4.3.6\sbin"` Note: version number might change
+   - `cd "C:\Program Files\RabbitMQ Server\rabbitmq_server-4.4.0\sbin"` Note: version number might change
    - run `.\rabbitmq-server.bat`
 3. Go to `http://localhost:15672/`
 
@@ -53,12 +53,14 @@ As the new ERA system will be written in TypeScript, that is the language I will
 - [x] Experiment with a topic exchange
 
 ### Stage 5 - ESR Prototype
-- [ ] Simulate ESS and STFC scheduling an experiment
-- [ ] Simulate the UO Backend creating an experiment
-- [ ] Publish an EXPERIMENT_CREATED event
-- [ ] Create an ESR queue and consumer
-- [ ] Validate the event and simulate ESR processing
-- [ ] Test the complete Scheduler → UO → ESR flow
+- [x] Define the actual RabbitMQ event contracts
+- [x] Simulate the ESS Scheduler publishing a booking event
+- [ ] Simulate the STFC Scheduler publishing a booking event
+- [x] Simulate the UO Backend receiving and creating an experiment
+- [x] Publish EXPERIMENT_CREATED to the outgoing exchange
+- [ ] Create the ESR queue and consumer
+- [ ] Validate and process experiment events
+- [ ] Test the complete flow
 
 ```mermaid
 flowchart TD
