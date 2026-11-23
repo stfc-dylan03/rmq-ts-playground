@@ -55,12 +55,12 @@ As the new ERA system will be written in TypeScript, that is the language I will
 ### Stage 5 - ESR Prototype
 - [x] Define the actual RabbitMQ event contracts
 - [x] Simulate the ESS Scheduler publishing a booking event
-- [ ] Simulate the STFC Scheduler publishing a booking event
+- [x] Simulate the STFC Scheduler publishing a booking event
 - [x] Simulate the UO Backend receiving and creating an experiment
 - [x] Publish EXPERIMENT_CREATED to the outgoing exchange
-- [ ] Create the ESR queue and consumer
-- [ ] Validate and process experiment events
-- [ ] Test the complete flow
+- [x] Create the ESR queue and consumer
+- [x] Validate and process experiment events
+- [x] Test the complete flow
 
 ```mermaid
 flowchart TD
@@ -79,10 +79,6 @@ flowchart TD
 
     J --> K[Safe to process]
 ```
-
-### Stage 4 - Exchanges and Routing
-
-### Stage 5 - Simulated Draft - Risk Assessment Integration
 
 ### Stage 6 - Message Acknowledgements
 
